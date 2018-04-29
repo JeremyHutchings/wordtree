@@ -23,11 +23,14 @@ class WordNode:
             the_tree[first_char] = WordNode()
             the_tree[first_char].character = first_char
 
-        #if word == 'ab':
-            #exit("it's true")
+        # TODO: why can't we edit objects in the middle ?
+        if len(word) == 1:
+            the_tree[first_char].is_word = True
 
         # Now we've take the first char off (and maybe assigned it to ourselves, is there any more chars?
-        if len(pass_on) > 0:
+        if pass_on:
+            if word == 'b':
+                exit("I'm here")
             # Looks like there are more, so pass them to the class at the index
             #Is there already a child node there ?
             next_level = pass_on[:1]
@@ -37,8 +40,5 @@ class WordNode:
             else:
                 the_tree[first_char].addWord(self.children, pass_on)
 
-        else:
-
-            the_tree[first_char].is_word = True
 
         return the_tree

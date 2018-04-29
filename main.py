@@ -17,7 +17,7 @@ content = [c.lower() for c in content]
 word_count = 0
 node_tree  = {}
 
-for word in ['a', 'abc', 'ab', 'adef','ferrr', 'adet', 'ferm', 'fer']:
+for word in ['a', 'abc', 'ab']:
 
     word_count += 1
     print(f"---- Adding word {word}")
