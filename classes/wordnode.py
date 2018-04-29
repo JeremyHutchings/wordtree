@@ -10,12 +10,12 @@ class WordNode:
         self.count     = 0
         self.children  = {}
 
-
         WordNode.characters += 1
+
 
     def addWord(self, this_tree, word_list):
 
-        # TODO: check length, type, etc; make it a list,
+        # TODO: check length, type, etc; make it a list
         word_list = list(word_list)
 
         # If we have something and we are empty and it's not on this level, init ourselves

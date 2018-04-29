@@ -15,10 +15,9 @@ the_tree = {}
 #content = [c.lower() for c in content]
 
 
-content = ['test', 'abc', 'abc', 'tim', 'tim', 'tim', 'tim',
-           'tim', 'tim', 'tim', 'tim', 'tim', 'tim', 'tim',
-           'tim', 'tim', 'tim', 'tim', 'tim', 'tim', 'tim']
-
+content = "Indicate in the nodes of the tree, which nodes are full words, as it's not just leafs (i.e. ant and antelope)"
+content = content.split()
+exit(var_dump(content))
 
 word_count = 0
 node_tree  = {}
