@@ -28,7 +28,6 @@ for word in content:
 
 print(f"-------------------------\nOuter: words added {word_count}")
 
-
-
 print("Finished")
-exit(var_dump(node_tree))
+print("len = " + str(len(node_tree)))
+#exit(var_dump(node_tree))
