@@ -22,32 +22,23 @@ class WordNode:
             # Nope, then this object can grab it
             the_tree[first_char] = WordNode()
             the_tree[first_char].character = first_char
-            self.character = first_char
+
+        #if word == 'ab':
+            #exit("it's true")
 
         # Now we've take the first char off (and maybe assigned it to ourselves, is there any more chars?
-        if pass_on:
+        if len(pass_on) > 0:
             # Looks like there are more, so pass them to the class at the index
-
             #Is there already a child node there ?
-            if pass_on[:1] not in the_tree[first_char].children:
-
-                if word == 'ab':
-                    exit("in here")
-
+            next_level = pass_on[:1]
+            if next_level not in the_tree[first_char].children.keys():
                 new_node = WordNode()
-                the_tree[first_char].children = new_node.addWord(self.children, pass_on)
+                the_tree[first_char].children[next_level] = new_node.addWord(self.children, pass_on)
             else:
                 the_tree[first_char].addWord(self.children, pass_on)
 
         else:
+
             the_tree[first_char].is_word = True
 
         return the_tree
-
-    def printChildren(self, level = 0):
-        level = level + 1
-        WordNode.looppass += 1
-        print(f"lp = {WordNode.looppass} level = {level} char = {self.character} is word {self.is_word}")
-        exit(pprint(self.children))
-        for char, node in self.children.items():
-            node.printChildren(level)
