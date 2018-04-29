@@ -9,3 +9,7 @@
 ### Pip install
 
  - pip install var_dump
+
+### Test source
+
+ - wget https://norvig.com/big.txt

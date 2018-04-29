@@ -1,5 +1,6 @@
 from pprint import pprint
 from var_dump import var_dump
+import string
 
 class WordNode:
     characters = 0
@@ -25,11 +26,12 @@ class WordNode:
         if type(this_tree) is not dict:
             return "first argument must be a dictionary"
 
-        # TODO: check length, type, etc; make it a list
         word_list = list(word_list)
 
-        # If we have something and we are empty and it's not on this level, init ourselves
-        first_char = word_list.pop(0)
+        if len(word_list):
+            first_char = word_list.pop(0)
+        else:
+            return this_tree
 
         # Is it already at this level?
         if first_char not in this_tree:
@@ -75,3 +77,16 @@ class WordNode:
                 return WordNode.isWord(node_tree[word[0]].children, word[1:])
 
         return False
+
+
+    @staticmethod
+    def cleanString(word = ''):
+        response = ''
+
+        for c in word:
+            # TODO move excpetions to config
+            # TODO can this be done with a map ?
+            if (c in ["'", '-']) or (c.lower() in string.ascii_lowercase):
+                response += c
+
+        return response
