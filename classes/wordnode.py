@@ -11,34 +11,30 @@ class WordNode:
 
         WordNode.characters += 1
 
-    def addWord(self, the_tree, word):
+    def addWord(self, this_tree, word_list):
 
         # If we have something and we are empty and it's not on this level, init ourselves
-        first_char = word[:1]
-        pass_on    = word[0:0]+word[1:]
+        first_char = word_list.pop(0)
 
         # Is it already at this level?
-        if first_char not in the_tree:
+        if first_char not in this_tree:
             # Nope, then this object can grab it
-            the_tree[first_char] = WordNode()
-            the_tree[first_char].character = first_char
+            this_tree[first_char] = WordNode()
+            this_tree[first_char].character = first_char
+        else:
+            pass
+            # It's there, go down a level
 
-        # TODO: why can't we edit objects in the middle ?
-        if len(word) == 1:
-            the_tree[first_char].is_word = True
+        if len(word_list) == 0:
+            this_tree[first_char].is_word = True
+            return this_tree
+        else:
+            next_char = word_list[0]
 
-        # Now we've take the first char off (and maybe assigned it to ourselves, is there any more chars?
-        if pass_on:
-            if word == 'b':
-                exit("I'm here")
-            # Looks like there are more, so pass them to the class at the index
-            #Is there already a child node there ?
-            next_level = pass_on[:1]
-            if next_level not in the_tree[first_char].children.keys():
-                new_node = WordNode()
-                the_tree[first_char].children[next_level] = new_node.addWord(self.children, pass_on)
-            else:
-                the_tree[first_char].addWord(self.children, pass_on)
+        if first_char in this_tree:
+            this_tree[first_char].addWord(this_tree[first_char].children, word_list)
+        else:
+            new_node = WordNode()
+            this_tree[first_char].children[next_char] = new_node.addWord(this_tree[first_char].children, word_list)
 
-
-        return the_tree
+        return this_tree
