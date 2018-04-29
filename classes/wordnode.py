@@ -15,6 +15,16 @@ class WordNode:
 
     def addWord(self, this_tree, word_list):
 
+        if type(word_list) is str:
+            word_list = list(word_list)
+        if type(word_list) is list:
+            pass
+        else:
+            return "Word list isn't a list or string"
+
+        if type(this_tree) is not dict:
+            return "first argument must be a dictionary"
+
         # TODO: check length, type, etc; make it a list
         word_list = list(word_list)
 
